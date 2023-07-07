@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="VirtualAccount_WSFinance_FinanceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://jktvwapps01/twagateway/FinanceService.asmx</Value>
+    </Setting>
+    <Setting Name="VirtualAccount_BrigdeService_BridgeService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://jktvwapps01/twagateway/BridgeService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

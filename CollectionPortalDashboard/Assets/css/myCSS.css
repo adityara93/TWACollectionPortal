@@ -1,0 +1,26 @@
+﻿
+tbody > tr > td
+{
+    cursor: pointer;
+}
+tbody > tr:hover
+{
+    background: beige;
+}
+
+.hiddencol
+{
+    display: none;
+}
+.ModalPopupBG
+{
+    background: #80808096;
+}
+label
+{
+    text-align: right;
+}
+.chkBoxClass > input
+{
+    transform: scale(1.5);
+}

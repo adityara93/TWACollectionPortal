@@ -1,0 +1,125 @@
+﻿.radio.radiobuttonlist input[type="radio"],
+.checkbox.checkboxlist input[type="checkbox"]
+{
+	margin-left: 0;
+}
+
+.radio.radiobuttonlist label,
+.checkbox.checkboxlist label
+{
+	margin-bottom: 4px;
+	margin-left: 0;
+}
+
+fieldset legend
+{
+	border: 0;
+	font-size: inherit;
+	font-weight: 700;
+	margin-bottom: 0;
+}
+
+fieldset .radio,
+fieldset .checkboxasp
+{
+	margin-top: 4px;
+}
+
+.checkboxasp {
+    padding-left: 20px;
+}
+
+    .checkboxasp label {
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        padding-left: 5px;
+    }
+
+        .checkboxasp label::before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            width: 17px;
+            height: 17px;
+            left: 0;
+            margin-left: -20px;
+            border: 1px solid #337ab7;
+            border-radius: 3px;
+            background-color: #fff;
+            -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+            -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+            transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+        }
+
+        .checkboxasp label::after {
+            display: inline-block;
+            position: absolute;            
+            width: 16px;
+            height: 16px;
+            left: 0;
+            top: 0;
+            margin-left: -20px;
+            padding-left: 3px;
+            padding-top: 1px;
+            font-size: 11px;
+            color: #555555;
+        }
+
+    .checkboxasp input[type="checkbox"] {
+        opacity: 0;
+        z-index: 1;
+    }
+
+        .checkboxasp input[type="checkbox"]:checked + label::after {
+            font-family: "FontAwesome";
+            content: "\f00c";
+        }
+
+
+
+.checkboxasp-primary input[type="checkbox"]:checked + label::before {
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+.checkboxasp-primary input[type="checkbox"]:checked + label::after {
+    color: #fff;
+}
+
+
+
+    .checkboxasp-danger label::before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            width: 17px;
+            height: 17px;
+            left: 0;
+            margin-left: -20px;
+            border: 2px solid #555555;
+            border-radius: 3px;
+            background-color: #fff;
+            -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+            -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+            transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+       }
+
+.checkboxasp-danger input[type="checkbox"]:checked + label::before {
+    background-color: #555555;
+    border-color: #555555;
+}
+
+.checkboxasp-danger input[type="checkbox"]:checked + label::after {
+    color: #fff;
+}
+
+
+.PnlDesign {
+    border: solid 1px #337ab7;
+    max-height: 200px;
+    width: 93%;
+    overflow-y: scroll;
+    padding-left: 30px;
+    padding-top: 10px;
+}

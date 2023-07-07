@@ -1,0 +1,152 @@
+﻿/* ---------------------------------------
+	Divs - Loading Dialog
+--------------------------------------- */
+.loading-dialog-background
+{
+	min-height: 2048px;
+    background-color: #006885; 
+	filter: alpha(opacity=50);
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+	-moz-opacity: 0.50;
+	opacity:0.50;
+}
+
+.loading-dialog-modal
+{
+    font-family: arial, helvetica, clean, sans-serif;
+    font-size: 11px;
+    padding: 2px;
+    /*background: #5BA5E1;*/
+}
+
+.loading-dialog-modal-container
+{
+    width: 150px;
+    height: 50px;
+}
+
+.loading-dialog-modal-content
+{
+	font-weight: bold;
+    background: #fefefe;
+    /*border: solid 2px #006885;*/
+    /*padding: 6px 6px 6px 12px;*/    
+    overflow: hidden;
+}
+
+/* ---------------------------------------
+	Divs - Change Password Dialog
+--------------------------------------- */
+.modal-background
+{
+	min-height: 2048px;
+    background-color: #006885; 
+	filter: alpha(opacity=50);
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+	-moz-opacity: 0.50;
+	opacity:0.50; 
+}
+
+.modal-glow
+{
+    font-family: arial, helvetica, clean, sans-serif;
+    font-size: 11px;
+    padding: 2px;
+    background: #006885;
+}
+
+.modal-container
+{
+	border: solid 2px #5BA5E1;
+	position: relative;
+}
+
+.modal-header
+{
+	background: #003300 url(../../Images/smsg_modal_header_bkgnd.png) left top repeat-x;
+	height: 58px;
+	padding: 0 10px 0 10px;
+}
+
+.modal-header-small
+{
+	background: #006885 url(../../Images/smsg_modal_header_bkgnd.png) left top repeat-x;
+	padding: 0 10px 0 10px;
+}
+.modal-header-caption
+{
+	border: 0; margin: 0; padding: 0;
+	font-size: 16px;
+	font-weight: bold;
+	padding-top: 12px;
+	margin-bottom: 6px;
+	color: #003300;
+}
+
+.modal-header-small-caption
+{
+	border: 0; margin: 0; padding: 0;
+	font-size: 12px;
+	font-weight: bold;
+	padding-top: 8px;
+	padding-bottom: 10px;
+	color: #003300;
+}
+.modal-header-caption-info
+{
+	border: 0; margin: 0; padding: 0;
+	font-size: 11px;
+	color: #003300;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+
+.modal-body
+{
+	padding: 20px 10px 20px 10px;
+	background: #ffffff;
+	max-height: 650px;
+	overflow: auto;
+}
+
+.modal-body-error
+{
+	border-bottom: solid 2px #cc0033; 
+	color: #cc0000; 
+	background: #ffeded; 
+	padding: 20px 13px 10px 13px; 
+	margin-left: -10px;
+	margin-right: -10px;
+	margin-top: -20px;
+	margin-bottom: 10px;
+	font-weight: bold; 	
+}
+
+.modal-footer
+{
+	background: #B9DCC7;
+	padding: 10px;
+	text-align: right;
+}
+
+.modal-icon
+{
+	position: absolute; 
+	top: 10px; 
+	right: 10px; 
+	height: 64px; 
+	width: 64px; 
+	background: transparent url(../../Images/image_login.png) no-repeat;
+	z-index: 0;
+}
+
+.modal-question-icon
+{
+	position: absolute; 
+	top: 10px; 
+	right: 10px; 
+	height: 64px; 
+	width: 64px; 
+	background: transparent url(../../Images/image_login.png) no-repeat;
+	z-index: 0;
+}

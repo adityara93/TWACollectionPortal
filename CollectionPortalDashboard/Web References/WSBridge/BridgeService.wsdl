@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendVAInstallment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="transDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendVAInstallmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendVAInstallmentResult" type="tns:OutputModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="OutputModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Result" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BRITokenModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="access_token" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="expires_in" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="token_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="scope" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="refresh_token" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="create_date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="expired_time" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PhotoLink" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeNIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserIDCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProdCtr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Department" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Group" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InputModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SecretKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remarks" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AppID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BRIVAResponseModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="status" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="responseDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="responseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="errDesc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="error_description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="data" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BRIVAModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="statusBayar" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="lastUpdate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="expiredDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="brivaNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="custCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nama" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="keterangan" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BrivaPaymentModel">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BRIVAModel">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="paymentDate" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="tellerid" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="no_rek" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="InsertPaymentLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="transDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPaymentLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertPaymentLogResult" type="tns:OutputModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBRIVA4TISNet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objInputModel" type="tns:InputModel" />
+            <s:element minOccurs="0" maxOccurs="1" name="objBRIVAModel" type="tns:BRIVAModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBRIVA4TISNetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBRIVA4TISNetResult" type="tns:OutputModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateBRIVA4TISNet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objInputModel" type="tns:InputModel" />
+            <s:element minOccurs="0" maxOccurs="1" name="objBRIVAModel" type="tns:BRIVAModel" />
+            <s:element minOccurs="1" maxOccurs="1" name="LiveEnvironment" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateBRIVA4TISNetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateBRIVA4TISNetResult" type="tns:OutputModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteBRIVA4TISNet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objInputModel" type="tns:InputModel" />
+            <s:element minOccurs="0" maxOccurs="1" name="objBRIVAModel" type="tns:BRIVAModel" />
+            <s:element minOccurs="1" maxOccurs="1" name="LiveEnvironment" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteBRIVA4TISNetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteBRIVA4TISNetResult" type="tns:OutputModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBRIVA4TISNet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objInputModel" type="tns:InputModel" />
+            <s:element minOccurs="0" maxOccurs="1" name="objBRIVAModel" type="tns:BRIVAModel" />
+            <s:element minOccurs="1" maxOccurs="1" name="LiveEnvironment" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBRIVA4TISNetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateBRIVA4TISNetResult" type="tns:OutputModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateTokenAPI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objInputModel" type="tns:InputModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateTokenAPIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateTokenAPIResult" type="tns:OutputModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateTokenBRIWT">
+        <s:complexType />
+      </s:element>
+      <s:element name="CreateTokenBRIWTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateTokenBRIWTResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendVAInstallmentSoapIn">
+    <wsdl:part name="parameters" element="tns:SendVAInstallment" />
+  </wsdl:message>
+  <wsdl:message name="SendVAInstallmentSoapOut">
+    <wsdl:part name="parameters" element="tns:SendVAInstallmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertPaymentLogSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertPaymentLog" />
+  </wsdl:message>
+  <wsdl:message name="InsertPaymentLogSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertPaymentLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBRIVA4TISNetSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBRIVA4TISNet" />
+  </wsdl:message>
+  <wsdl:message name="GetBRIVA4TISNetSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBRIVA4TISNetResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateBRIVA4TISNetSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateBRIVA4TISNet" />
+  </wsdl:message>
+  <wsdl:message name="CreateBRIVA4TISNetSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateBRIVA4TISNetResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteBRIVA4TISNetSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteBRIVA4TISNet" />
+  </wsdl:message>
+  <wsdl:message name="DeleteBRIVA4TISNetSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteBRIVA4TISNetResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBRIVA4TISNetSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateBRIVA4TISNet" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBRIVA4TISNetSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateBRIVA4TISNetResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateTokenAPISoapIn">
+    <wsdl:part name="parameters" element="tns:CreateTokenAPI" />
+  </wsdl:message>
+  <wsdl:message name="CreateTokenAPISoapOut">
+    <wsdl:part name="parameters" element="tns:CreateTokenAPIResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateTokenBRIWTSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateTokenBRIWT" />
+  </wsdl:message>
+  <wsdl:message name="CreateTokenBRIWTSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateTokenBRIWTResponse" />
+  </wsdl:message>
+  <wsdl:portType name="BridgeServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendVAInstallment">
+      <wsdl:input message="tns:SendVAInstallmentSoapIn" />
+      <wsdl:output message="tns:SendVAInstallmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPaymentLog">
+      <wsdl:input message="tns:InsertPaymentLogSoapIn" />
+      <wsdl:output message="tns:InsertPaymentLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBRIVA4TISNet">
+      <wsdl:input message="tns:GetBRIVA4TISNetSoapIn" />
+      <wsdl:output message="tns:GetBRIVA4TISNetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateBRIVA4TISNet">
+      <wsdl:input message="tns:CreateBRIVA4TISNetSoapIn" />
+      <wsdl:output message="tns:CreateBRIVA4TISNetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBRIVA4TISNet">
+      <wsdl:input message="tns:DeleteBRIVA4TISNetSoapIn" />
+      <wsdl:output message="tns:DeleteBRIVA4TISNetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBRIVA4TISNet">
+      <wsdl:input message="tns:UpdateBRIVA4TISNetSoapIn" />
+      <wsdl:output message="tns:UpdateBRIVA4TISNetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateTokenAPI">
+      <wsdl:input message="tns:CreateTokenAPISoapIn" />
+      <wsdl:output message="tns:CreateTokenAPISoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateTokenBRIWT">
+      <wsdl:input message="tns:CreateTokenBRIWTSoapIn" />
+      <wsdl:output message="tns:CreateTokenBRIWTSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BridgeServiceSoap" type="tns:BridgeServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendVAInstallment">
+      <soap:operation soapAction="http://tempuri.org/SendVAInstallment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPaymentLog">
+      <soap:operation soapAction="http://tempuri.org/InsertPaymentLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBRIVA4TISNet">
+      <soap:operation soapAction="http://tempuri.org/GetBRIVA4TISNet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateBRIVA4TISNet">
+      <soap:operation soapAction="http://tempuri.org/CreateBRIVA4TISNet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBRIVA4TISNet">
+      <soap:operation soapAction="http://tempuri.org/DeleteBRIVA4TISNet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBRIVA4TISNet">
+      <soap:operation soapAction="http://tempuri.org/UpdateBRIVA4TISNet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTokenAPI">
+      <soap:operation soapAction="http://tempuri.org/CreateTokenAPI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTokenBRIWT">
+      <soap:operation soapAction="http://tempuri.org/CreateTokenBRIWT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BridgeServiceSoap12" type="tns:BridgeServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendVAInstallment">
+      <soap12:operation soapAction="http://tempuri.org/SendVAInstallment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPaymentLog">
+      <soap12:operation soapAction="http://tempuri.org/InsertPaymentLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBRIVA4TISNet">
+      <soap12:operation soapAction="http://tempuri.org/GetBRIVA4TISNet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateBRIVA4TISNet">
+      <soap12:operation soapAction="http://tempuri.org/CreateBRIVA4TISNet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBRIVA4TISNet">
+      <soap12:operation soapAction="http://tempuri.org/DeleteBRIVA4TISNet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBRIVA4TISNet">
+      <soap12:operation soapAction="http://tempuri.org/UpdateBRIVA4TISNet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTokenAPI">
+      <soap12:operation soapAction="http://tempuri.org/CreateTokenAPI" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTokenBRIWT">
+      <soap12:operation soapAction="http://tempuri.org/CreateTokenBRIWT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BridgeService">
+    <wsdl:port name="BridgeServiceSoap" binding="tns:BridgeServiceSoap">
+      <soap:address location="http://jktvwapps01/twagateway/BridgeService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BridgeServiceSoap12" binding="tns:BridgeServiceSoap12">
+      <soap12:address location="http://jktvwapps01/twagateway/BridgeService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

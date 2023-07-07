@@ -1,0 +1,277 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="NewSite.master.vb" Inherits="CollectionPortalDashboard.NewSite" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Virtual Account Dashboard</title>
+    <link rel="stylesheet" href="~/Assets/admin-lte/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/Assets/admin-lte/css/adminlte.min.css">
+    <link rel="stylesheet" href="~/Assets/css/main.css">
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="hold-transition sidebar-mini">
+    <form id="form1" runat="server">
+    <script src='<%= ResolveClientUrl("~/Assets/admin-lte/plugins/jquery/jquery.min.js") %>'></script>
+    <asp:ScriptManager ID="scriptManager1" runat="server">
+    </asp:ScriptManager>
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+                <!-- Left navbar links -->
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                  </li>
+                </ul>
+                <div class="navbar-nav ml-auto">
+                    <img src='<%= ResolveClientUrl("~/Assets/admin-lte/img/LogoATPI2.png") %>' height="50" width="auto" />
+                </div>
+            </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+                <!-- Brand Logo -->
+                <a href='<%=ResolveClientUrl("~/Contents/Home.aspx") %>' class="brand-link">
+                    <img src='<%= ResolveClientUrl("~/Assets/admin-lte/img/CollectionPortalLogo.png") %>' alt="CP Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                    <span class="brand-text font-weight-light m-1"><b>Collection </b>Portal</span>
+                </a>
+
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <!-- Sidebar user panel (optional) -->
+                    <div class="user-panel d-flex">
+                        <div class="info m-2">
+                            <span class="d-block" style="color:White">
+                                <asp:Label ID="lblUname" runat="server" Text=""></asp:Label>
+                            </span>
+                            <a href="#"><i class="fa fa-circle text-success"></i> 
+                                <asp:Label ID="lblUType" runat="server" Text=""></asp:Label>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Menu -->
+                    <nav class="mt-2">
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            <li class="nav-item" runat="server" id="RoleAll">
+                                <a href='<%=ResolveClientUrl("~/Contents/Home.aspx") %>' class="nav-link">
+                                    <i class="nav-icon fas fa-home"></i>
+                                    <p>Home</p>
+                                </a>
+                            </li>
+
+                            <li runat="server" id="mnuPayment" visible="false" class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>
+                                    Payment
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                            <li class="nav-item" id="mnuPaymentList" visible="false" runat="server">
+                                <a href='<%= ResolveClientUrl("~/Contents/PaymentList.aspx") %>' class="nav-link">
+                                    <%--<i class="nav-icon fas fa-book"></i>--%>
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Payment List</p>
+                                </a>
+                            </li> 
+
+                            <li class="nav-item" id="mnuSettlementMonitoring" visible="false" runat="server">
+                                <a href='<%= ResolveClientUrl("~/Contents/SettlementMonitoring.aspx") %>' class="nav-link">
+                                    <%--<i class="nav-icon fas fa-columns"></i>--%>
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Settlement Monitoring</p>
+                                </a>
+                            </li>
+                            </ul>                            
+                            </li>
+
+                            <li runat="server" id="mnuMandiri" visible="false" class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-university"></i>
+                                <p>
+                                    Mandiri
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                            <li class="nav-item" id="mnuGenerateVirtualAccount" visible="false" runat="server">
+                                <a href='<%= ResolveClientUrl("~/Contents/GenerateVirtualAccount.aspx") %>' class="nav-link">
+                                    <%--<i class="nav-icon fas fa-cogs"></i>--%>
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Generate Mandiri VA</p>
+                                </a>
+                            </li>
+
+                            </ul>
+                            </li>
+
+
+                            <li runat="server" id="mnuBRI" visible="false" class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-university"></i>
+                                <p>
+                                    BRI
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                            <li class="nav-item"  id="mnuResendBRIVA" visible="false" runat="server">
+                                <a href='<%= ResolveClientUrl("~/Contents/ResendBRIVA.aspx") %>' class="nav-link">
+                                    <%--<i class="nav-icon fas fa-money-check"></i>--%>
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>BRIVA</p>
+                                </a>
+                            </li>
+                            </ul>
+                            </li>
+
+
+                           <%-- <li runat="server" id="mnuBCA" visible="false" class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-university"></i>
+                                <p>
+                                    BCA
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                            <li class="nav-item"  id="Li2" visible="false" runat="server">
+                                <a href='<%= ResolveClientUrl("~/Contents/ResendBRIVA.aspx") %>' class="nav-link">
+                                   
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>BRIVA</p>
+                                </a>
+                            </li>
+                            </ul>
+                            </li>
+
+
+                            <li runat="server" id="mnuBNI" visible="false" class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-university"></i>
+                                <p>
+                                    BNI
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                            <li class="nav-item"  id="Li3" visible="false" runat="server">
+                                <a href='<%= ResolveClientUrl("~/Contents/ResendBRIVA.aspx") %>' class="nav-link">
+                            
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>BRIVA</p>
+                                </a>
+                            </li>
+                            </ul>
+                            </li>
+--%>
+
+                            <li runat="server" id="mnuReportMandiri" visible="false" class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>
+                                    Report
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                            <li class="nav-item"  id="mnuReportMandiriVAClient" visible="false" runat="server">
+                                <a href='<%= ResolveClientUrl("~/Report/RptMandiriVirtualAccount.aspx") %>' class="nav-link">                
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Mandiri VA Client</p>
+                                </a>
+                            </li>
+                            </ul>
+                            </li>
+
+
+                            <li runat="server" id="mnuUserManagement" visible="false" class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-sitemap"></i>
+                                <p>
+                                    User Management
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                            
+
+                            <li class="nav-item" id="mnuAddPage" visible="false" runat="server">
+                             <a href='<%= ResolveClientUrl("~/Contents/AddPage.aspx") %>' class="nav-link">
+                                    <%--<i class="nav-icon fas fa-user-friends"></i>--%>
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add Page</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item" id="mnuAddAccess" visible="false" runat="server">
+                             <a href='<%= ResolveClientUrl("~/Contents/AddAccess.aspx") %>' class="nav-link">
+                                    <%--<i class="nav-icon fas fa-user-friends"></i>--%>
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add Access</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item" id="mnuAddUser" visible="false" runat="server">
+                             <a href='<%= ResolveClientUrl("~/Contents/AddUser.aspx") %>' class="nav-link">
+                                    <%--<i class="nav-icon fas fa-user-friends"></i>--%>
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add User</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item"  id="mnuChangePwd" visible="true" runat="server">
+                                <a href='<%= ResolveClientUrl("~/Contents/ChangePassword.aspx") %>' class="nav-link">
+                                    <%--<i class="nav-icon fas fa-users-cog"></i>--%>
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Change Password</p>
+                                </a>
+                            </li>
+
+                            </ul>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="" runat="server" class="nav-link" onserverclick="LogOut">
+                                    <i class="nav-icon fas fa-sign-out-alt"></i><p>LogOut</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- /.sidebar-menu -->
+
+                </div>  <!-- /.sidebar -->
+            </aside>
+        <!-- Content -->
+        <div class="content-wrapper">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <!-- /Content -->
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <!-- To the right -->
+                <div class="float-right d-none d-sm-inline">
+            
+                </div>
+            <!-- Default to the left -->
+                <strong>PT. Asuransi Tugu Pratama Indonesia, Tbk.</strong>
+            </footer>
+    </div>
+    <!-- Bootstrap 4 -->
+    <script src='<%=ResolveClientUrl("~/Assets/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js") %>'></script>
+    <!-- AdminLTE App -->
+    <script src='<%=ResolveClientUrl("~/Assets/admin-lte/js/adminlte.min.js") %>'></script>
+    <!-- SweetAlert2 -->
+    <script src='<%=ResolveClientUrl("~/Assets/admin-lte/plugins/sweetalert2/sweetalert2.min.js") %>'></script>
+    </form>
+</body>
+</html>
